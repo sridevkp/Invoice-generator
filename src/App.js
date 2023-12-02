@@ -1,24 +1,30 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Invoice from './components/Invoice';
+import { Button, Container } from '@mui/material/' ;
 
 function App() {
+  const [ create, setCreate ] = useState(false)
+
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className='app' sx={{ display: 'flex'}}>{
+      create ?
+      <Invoice 
+        invoiceNumber = {80928409880} 
+        id = {1}
+        company={{
+          name:"KMKO",
+          address: 'Busy street\nMumbai',
+          logo:"https://i.imgur.com/WUtsRM9.png",
+          phone:'+918281******',
+          site:'https://kmkocompany.com',
+          email:'samplemail@gmail.com'
+        }} 
+      ></Invoice>
+
+      :<Button variant='contained' onClick={ () => { setCreate(true) }}>Create</Button>
+    }</Container>
   );
 }
 
