@@ -1,8 +1,16 @@
+
 .container{
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 0 2px grey;
+    padding: 0 2rem;
+    padding-bottom: 2rem;
+    box-sizing: border-box;
+}
+.section{
+    margin-top: 1rem;
 }
 .header{
     text-align: center;
@@ -33,4 +41,31 @@
 }
 .barcode{
     height: 60px;
+}
+.content table{
+    width: 100%;
+}
+.content thead{
+    text-align: left;
+}
+.content td{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: .6rem 0;
+}
+.content tr td:nth-child(5):before{
+    content: "$";
+    font-style: italic;
+}
+.h5{
+    font-weight: 500;
+}
+.h4{
+    font-weight: 600;
+    font-size: large;
+}
+.imp td{
+    border: none;
+}
+td.h4{
+    border-top: 3px solid black;
 }
