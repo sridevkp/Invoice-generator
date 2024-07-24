@@ -1,18 +1,14 @@
+import React from 'react';
+import useInvoiceData from '../hooks/useInvoiceData';
 import './invoice.css'
 import Barcode from 'react-barcode'
 
-const Invoice = ({ invoiceNumber, date, id, company, billedTo, content, ps, innerRef, tax, discount }) => {
-    var subtotal = 0
-
-    content.forEach( item => {
-        subtotal += item.price * item.qty
-    });
-
-    const calculatedDiscount = Math.min( discount.max, subtotal * discount.percent/100)
-    const calculatedTax = Number(((subtotal-calculatedDiscount) * tax /100).toFixed(1))
-
+const Invoice = React.forwardRef(( props, ref ) => {
+    const {data} = useInvoiceData();
+    const { invoiceNumber, date, id, company, billedTo, content, ps, tax, subtotal, calculatedDiscount, calculatedTax, total } = data ;
+    
     return (
-        <div className="container" ref={innerRef}>
+        <div className={`container ${ props.hidden && "hidden"}`} ref={ref}>
             <div className='header'><h1>INVOICE</h1></div>
             <div className='section details'>
                 <div className='company-info'>
@@ -32,7 +28,7 @@ const Invoice = ({ invoiceNumber, date, id, company, billedTo, content, ps, inne
                     <table>
                         <tbody>
                             <tr>
-                                <td className='label'>Date Added</td><td>: {date.toLocaleDateString()}</td>                          
+                                <td className='label'>Date Added</td><td>: {new Date(date).toLocaleDateString()}</td>                          
                             </tr>
                             <tr>
                                 <td className='label'>Invoice No</td><td> <Barcode value={String(invoiceNumber)} width={1.2} height={50} ></Barcode> </td>
@@ -105,7 +101,7 @@ const Invoice = ({ invoiceNumber, date, id, company, billedTo, content, ps, inne
                             <td></td>
                             <td></td>
                             <td className='h4'>Total</td>
-                            <td className='h4'>{subtotal-calculatedDiscount+calculatedTax}</td>
+                            <td className='h4'>{total}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -117,6 +113,6 @@ const Invoice = ({ invoiceNumber, date, id, company, billedTo, content, ps, inne
             </div>
         </div>
     )
-}
+})
 
 export default Invoice

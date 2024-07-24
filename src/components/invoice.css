@@ -9,6 +9,12 @@
     padding-bottom: 2rem;
     box-sizing: border-box;
 }
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 .section{
     margin-top: 1rem;
 }
@@ -61,11 +67,47 @@
 }
 .h4{
     font-weight: 600;
-    font-size: large;
+    font-size: larger;
 }
 .imp td{
     border: none;
 }
 td.h4{
     border-top: 3px solid black;
+}
+
+.tax-input{
+    width: 64px;
+}
+
+.ps-title-input{
+    width: 100%;
+}
+
+.ps-note-area{
+    width: 100%;
+    min-height: 5rem;
+}
+.delete-item-btn{
+    background-color: #db524b;
+    border-radius: 4px;
+    color: white;
+}
+.hidden{
+    display: none;
+}
+
+.add-item-btn{
+    width: 100%;
+    border-radius: 4px;
+    background-color: #7bd500;
+    margin: 1rem 0;
+    font-size: large;
+    cursor: pointer;
+}
+.add-item-btn:hover{
+    background-color: #6bb700;
+}
+button{
+    font-family: monospace;
 }
