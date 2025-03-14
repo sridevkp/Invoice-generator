@@ -3,12 +3,12 @@ import useInvoiceData from '../hooks/useInvoiceData';
 import './invoice.css'
 import Barcode from 'react-barcode'
 
-const Invoice = React.forwardRef(( props, ref ) => {
+const Invoice = React.forwardRef((props, ref) => {
     const {data} = useInvoiceData();
-    const { invoiceNumber, date, id, company, billedTo, content, ps, tax, subtotal, calculatedDiscount, calculatedTax, total } = data ;
+    const { invoiceNumber, date, id, company, billedTo, content, ps, tax, subtotal, calculatedDiscount, calculatedTax, total } = data;
     
     return (
-        <div className={`container ${ props.hidden && "hidden"}`} ref={ref}>
+        <div className={`container ${props.hidden ? "hidden" : ""}`} ref={ref}>
             <div className='header'><h1>INVOICE</h1></div>
             <div className='section details'>
                 <div className='company-info'>
@@ -112,7 +112,9 @@ const Invoice = React.forwardRef(( props, ref ) => {
                 {ps.note}
             </div>
         </div>
-    )
-})
+    );
+});
 
-export default Invoice
+Invoice.displayName = 'Invoice';
+
+export default Invoice;
