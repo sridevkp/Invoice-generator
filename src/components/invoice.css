@@ -256,6 +256,7 @@ input:focus, textarea:focus {
     }
     
     .section {
+        width: 100%;
         background: none;
         padding: 1rem;
         margin-top: 1rem;
@@ -265,7 +266,6 @@ input:focus, textarea:focus {
         display: flex;
         flex-direction: row;
         gap: 2rem;
-        page-break-inside: avoid;
     }
     
     .company-info {
@@ -305,9 +305,6 @@ input:focus, textarea:focus {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .details {
-        flex-direction: column;
-    }
     
     .company-info,
     .invoice-info {
